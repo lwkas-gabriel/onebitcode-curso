@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escalação de Jogadores</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Escalador de Jogadores</h1>
+    <hr><br>
+    <div>
+        <label for="">Posição: </label>
+        <input type="text" id="position">
+    </div><br>
+    <div>
+        <label for="">Nome: </label>
+        <input type="text" id="name">
+    </div><br>
+    <div>
+        <label for="">Número: </label>
+        <input type="text" id="number">
+    </div><br>
+    <button onclick="addPlayer()">Adicionar Jogador</button><br><br>
+
+    <div>
+        <label for="">Número: </label>
+        <input type="text" id="number-deletion">
+    </div><br>
+
+    <button onclick="removePlayer()">Remover Jogador</button><br><br>
+
+    <hr>
+
+    <h3>Meu Time</h2>
+    <section id="players-list"></section>
+</body>
+</html>
