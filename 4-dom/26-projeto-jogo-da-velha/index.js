@@ -1,5 +1,5 @@
-let tagJogada = false; //false == X true = O
-let finalizouPartida = 0;
+let tagJogada = false; //false = X true = O
+let contagemEmpate = 0;
 const matrizDoJogo = 
 [
     ["A","B","C"],
@@ -9,29 +9,46 @@ const matrizDoJogo =
 
 const playerOne = document.getElementById("namePlayer1");
 const playerTwo = document.getElementById("namePlayer2");
+const playerTurn = document.querySelector("h2");
 
 document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
-    ticTacToeBtn.addEventListener("click", function(){
+    ticTacToeBtn.addEventListener("click", function jogada(){
         if(tagJogada){
-            ticTacToeBtn.innerHTML = "O";
-            ticTacToeBtn.disabled = true;
+            playerTurn.innerText = `É a sua vez, ${playerOne.value}!`;
+            console.log(playerOne);
+            ticTacToeBtn.innerText = "O";
+            //ticTacToeBtn.disabled = true;
+            ticTacToeBtn.classList.remove("availablePlay");
+            ticTacToeBtn.classList.add("unavailablePlay");
+            ticTacToeBtn.removeEventListener("click", jogada);
             tagJogada = false;
             matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "O";
             //console.table(matrizDoJogo);
             const isPartida = verificaTabuleiro();
-            console.log(isPartida);
+            contagemEmpate++;
             if (isPartida) {
-                alert("O jogador da 'O' venceu!")
+                alert(`Parabéns ${playerOne.value}, você venceu!`);
+            }
+            if(contagemEmpate===9){
+                alert("jogo empatado!");
+                contagemEmpate++;
             }
         }else{
-            ticTacToeBtn.innerHTML = "X";
-            ticTacToeBtn.disabled = true;
+            playerTurn.innerText = `É a sua vez, ${playerTwo.value}!`;
+            ticTacToeBtn.innerText = "X";
+            ticTacToeBtn.classList.remove("availablePlay");
+            ticTacToeBtn.classList.add("unavailablePlay");
+            ticTacToeBtn.removeEventListener("click", jogada);
+            //ticTacToeBtn.disabled = true;
             tagJogada = true;
             matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "X";
             const isPartida = verificaTabuleiro();
-            console.log(isPartida);
+            contagemEmpate++;
             if (isPartida) {
-                alert("O jogador do 'X' venceu!")
+                alert(`Parabéns ${playerTwo.value}, você venceu!`);
+            }
+            if(contagemEmpate===9){
+                alert("jogo empatado!");
             }
             //console.table(matrizDoJogo);
         }
