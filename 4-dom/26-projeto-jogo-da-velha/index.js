@@ -92,13 +92,33 @@ function verificaTabuleiro(){
     for(let i = 0; i < matrizDoJogo.length; i++){
         for(let j = 0; j < matrizDoJogo.length; j++){
             if(matrizDoJogo[j][0] === matrizDoJogo[j][1] && matrizDoJogo[j][0] === matrizDoJogo[j][2]){
-                 isPartidaFinalizada = true;
+                let posicao1 = `${j}.0`
+                let posicao2 = `${j}.1`
+                let posicao3 = `${j}.2`
+                //console.log(posicao)
+                changeStyleColor(posicao1, posicao2, posicao3);
+                isPartidaFinalizada = true;
             }else if (matrizDoJogo[0][j] === matrizDoJogo[1][j] && matrizDoJogo[1][j] === matrizDoJogo[2][j]){
+                let posicao1 = `0.${j}`
+                let posicao2 = `1.${j}`
+                let posicao3 = `2.${j}`
+                //console.log(posicao)
+                changeStyleColor(posicao1, posicao2, posicao3);
                 isPartidaFinalizada = true;
             }
             else if(matrizDoJogo[0][0] === matrizDoJogo[1][1] && matrizDoJogo[1][1] === matrizDoJogo[2][2]){
+                let posicao1 = `0.0`
+                let posicao2 = `1.1`
+                let posicao3 = `2.2`
+                //console.log(posicao)
+                changeStyleColor(posicao1, posicao2, posicao3);
                 isPartidaFinalizada = true;
             }else if(matrizDoJogo[0][2] === matrizDoJogo[1][1] && matrizDoJogo[1][1] === matrizDoJogo[2][0]){
+                let posicao1 = `0.2`
+                let posicao2 = `1.1`
+                let posicao3 = `2.0`
+                //console.log(posicao)
+                changeStyleColor(posicao1, posicao2, posicao3);
                 isPartidaFinalizada = true;
             }
         }
@@ -115,6 +135,10 @@ function restartGame(){
             button.classList.remove("unavailablePlay");
             button.classList.add("availablePlay");
             button.innerHTML = "";
+        }else if(button.classList.value = "winPostion"){
+            button.classList.remove("winPostion");
+            button.classList.add("availablePlay");
+            button.innerHTML = "";
         }
     });
     matrizDoJogo = 
@@ -124,9 +148,20 @@ function restartGame(){
         ["F","G","H"],
     ];
     container.lastChild.remove();
+    number = randomNumberInterval(1,2);
     //console.log(container.lastChild);
 }
 
 function randomNumberInterval(a, b) {
+    // decide aleatoriamente quem começa o jogo
     return Math.floor(Math.random() * (b - a + 1)) + a
+}
+
+function changeStyleColor(position1, position2, position3){
+    document.querySelectorAll("div > button").forEach(function(button){
+        if(button.dataset.value === position1 || button.dataset.value === position2 || button.dataset.value === position3){
+            button.classList.remove("unavailablePlay");
+            button.classList.add("winPosition");
+        }
+    });
 }
