@@ -92,33 +92,17 @@ function verificaTabuleiro(){
     for(let i = 0; i < matrizDoJogo.length; i++){
         for(let j = 0; j < matrizDoJogo.length; j++){
             if(matrizDoJogo[j][0] === matrizDoJogo[j][1] && matrizDoJogo[j][0] === matrizDoJogo[j][2]){
-                let posicao1 = `${j}.0`
-                let posicao2 = `${j}.1`
-                let posicao3 = `${j}.2`
-                //console.log(posicao)
-                changeStyleColor(posicao1, posicao2, posicao3);
+                changeStyleColor(`${j}.0`, `${j}.1`, `${j}.2`);
                 isPartidaFinalizada = true;
             }else if (matrizDoJogo[0][j] === matrizDoJogo[1][j] && matrizDoJogo[1][j] === matrizDoJogo[2][j]){
-                let posicao1 = `0.${j}`
-                let posicao2 = `1.${j}`
-                let posicao3 = `2.${j}`
-                //console.log(posicao)
-                changeStyleColor(posicao1, posicao2, posicao3);
+                changeStyleColor(`0.${j}`, `1.${j}`, `2.${j}`);
                 isPartidaFinalizada = true;
             }
             else if(matrizDoJogo[0][0] === matrizDoJogo[1][1] && matrizDoJogo[1][1] === matrizDoJogo[2][2]){
-                let posicao1 = `0.0`
-                let posicao2 = `1.1`
-                let posicao3 = `2.2`
-                //console.log(posicao)
-                changeStyleColor(posicao1, posicao2, posicao3);
+                changeStyleColor(`0.0`, `1.1`, `2.2`);
                 isPartidaFinalizada = true;
             }else if(matrizDoJogo[0][2] === matrizDoJogo[1][1] && matrizDoJogo[1][1] === matrizDoJogo[2][0]){
-                let posicao1 = `0.2`
-                let posicao2 = `1.1`
-                let posicao3 = `2.0`
-                //console.log(posicao)
-                changeStyleColor(posicao1, posicao2, posicao3);
+                changeStyleColor(`0.2`, `1.1`, `2.0`);
                 isPartidaFinalizada = true;
             }
         }
