@@ -1,6 +1,8 @@
-let tagJogada = false; //false = X true = O
+let number = randomNumberInterval(1,2);
+
+let tagJogada =  number === 1 ? true : false;
 let contagemEmpate = 0;
-const matrizDoJogo = 
+let  matrizDoJogo = 
 [
     ["A","B","C"],
     ["C","D","E"],
@@ -10,12 +12,13 @@ const matrizDoJogo =
 const playerOne = document.getElementById("namePlayer1");
 const playerTwo = document.getElementById("namePlayer2");
 const playerTurn = document.querySelector("h2");
+const container = document.getElementById("container");
 
 document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
     ticTacToeBtn.addEventListener("click", function jogada(){
         if(playerOne.value != "" && playerTwo.value!= "") {
             if(tagJogada){
-                playerTurn.innerText = `É a sua vez, ${playerOne.value}!`;
+                playerTurn.innerText = `É a sua vez, ${playerTwo.value}!`;
                 console.log(playerOne);
                 ticTacToeBtn.innerText = "O";
                 //ticTacToeBtn.disabled = true;
@@ -28,14 +31,26 @@ document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
                 const isPartida = verificaTabuleiro();
                 contagemEmpate++;
                 if (isPartida) {
-                    alert(`Parabéns ${playerOne.value}, você venceu!`);
+                    playerTurn.innerText = `Parabéns ${playerOne.value}, você venceu!`;
+                    document.querySelectorAll("button").forEach(function (ticTacToeBtn) {
+                        ticTacToeBtn.removeEventListener("click", jogada);
+                    });
+                    const restartButton = document.createElement("button");
+                    restartButton.innerText = "Reiniciar jogo!"
+                    restartButton.type = "button";
+                    restartButton.addEventListener("click", restartGame);
+                    container.appendChild(restartButton);
                 }
                 if(contagemEmpate===9){
                     playerTurn.innerText = "Jogo empatado!";
-                    contagemEmpate++;
+                    const restartButton = document.createElement("button");
+                    restartButton.innerText = "Reiniciar jogo!"
+                    restartButton.type = "button";
+                    restartButton.addEventListener("click", restartGame);
+                    container.appendChild(restartButton);
                 }
             }else{
-                playerTurn.innerText = `É a sua vez, ${playerTwo.value}!`;
+                playerTurn.innerText = `É a sua vez, ${playerOne.value}!`;
                 ticTacToeBtn.innerText = "X";
                 ticTacToeBtn.classList.remove("availablePlay");
                 ticTacToeBtn.classList.add("unavailablePlay");
@@ -46,10 +61,23 @@ document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
                 const isPartida = verificaTabuleiro();
                 contagemEmpate++;
                 if (isPartida) {
-                    alert(`Parabéns ${playerTwo.value}, você venceu!`);
+                    playerTurn.innerText = `Parabéns ${playerTwo.value}, você venceu!`;
+                    document.querySelectorAll("button").forEach(function (ticTacToeBtn) {
+                        ticTacToeBtn.removeEventListener("click", jogada);
+                    });
+                    const restartButton = document.createElement("button");
+                    restartButton.innerText = "Reiniciar jogo!"
+                    restartButton.type = "button";
+                    restartButton.addEventListener("click", restartGame);
+                    container.appendChild(restartButton);
                 }
                 if(contagemEmpate===9){
                     playerTurn.innerText = "Jogo empatado!";
+                    const restartButton = document.createElement("button");
+                    restartButton.innerText = "Reiniciar jogo!"
+                    restartButton.type = "button";
+                    restartButton.addEventListener("click", restartGame);
+                    container.appendChild(restartButton);
                 }
                 //console.table(matrizDoJogo);
             }
@@ -76,4 +104,29 @@ function verificaTabuleiro(){
         }
     }
     return isPartidaFinalizada;
+}
+
+function restartGame(){
+    playerOne.value = "";
+    playerTwo.value = "";
+    playerTurn.innerText = "";
+    document.querySelectorAll("div > button").forEach(function(button){
+        if(button.classList.value === "unavailablePlay"){
+            button.classList.remove("unavailablePlay");
+            button.classList.add("availablePlay");
+            button.innerHTML = "";
+        }
+    });
+    matrizDoJogo = 
+    [
+        ["A","B","C"],
+        ["C","D","E"],
+        ["F","G","H"],
+    ];
+    container.lastChild.remove();
+    //console.log(container.lastChild);
+}
+
+function randomNumberInterval(a, b) {
+    return Math.floor(Math.random() * (b - a + 1)) + a
 }
