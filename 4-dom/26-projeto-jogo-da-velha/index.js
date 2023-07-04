@@ -64,6 +64,10 @@ function restartGame(){
     ];
     container.lastChild.remove();
     number = randomNumberInterval(1,2);
+    document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
+        ticTacToeBtn.addEventListener("click", jogada);
+    });
+    contagemEmpate = 0;
     //console.log(container.lastChild);
 }
 
@@ -99,10 +103,10 @@ function jogada(ev){
             contagemEmpate++;
             if (isPartida) {
                 playerTurn.innerText = `Parabéns ${playerOne.value}, você venceu!`;
-                document.querySelectorAll("div > button").forEach(function (button) {
-                    console.log(button.innerText);
-                    button.classList.remove("availablePlay");
-                    button.classList.add("unavailablePlay");
+                document.querySelectorAll("#gameBtn").forEach(function (button) {
+                    //console.log(button.innerText);
+                    //button.classList.remove("availablePlay");
+                    //button.classList.add("unavailablePlay");
                     button.removeEventListener("click", jogada);
                     //button.enabled = false
                 });
@@ -133,10 +137,10 @@ function jogada(ev){
             contagemEmpate++;
             if (isPartida) {
                 playerTurn.innerText = `Parabéns ${playerTwo.value}, você venceu!`;
-                document.querySelectorAll(".availablePlay").forEach(function (button) {
+                document.querySelectorAll("#gameBtn").forEach(function (button) {
                     console.log(button.innerText);
-                    button.classList.remove("availablePlay");
-                    button.classList.add("unavailablePlay");
+                    //button.classList.remove("availablePlay");
+                    //button.classList.add("unavailablePlay");
                     button.removeEventListener("click", jogada);
                 });
                 const restartButton = document.createElement("button");
