@@ -15,76 +15,7 @@ const playerTurn = document.querySelector("h2");
 const container = document.getElementById("container");
 
 document.querySelectorAll(".availablePlay").forEach(function (ticTacToeBtn){
-    ticTacToeBtn.addEventListener("click", function jogada(){
-        if(playerOne.value != "" && playerTwo.value!= "") {
-            if(tagJogada){
-                playerTurn.innerText = `É a sua vez, ${playerTwo.value}!`;
-                console.log(playerOne);
-                ticTacToeBtn.innerText = "O";
-                //ticTacToeBtn.disabled = true;
-                ticTacToeBtn.classList.remove("availablePlay");
-                ticTacToeBtn.classList.add("unavailablePlay");
-                ticTacToeBtn.removeEventListener("click", jogada);
-                tagJogada = false;
-                matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "O";
-                //console.table(matrizDoJogo);
-                const isPartida = verificaTabuleiro();
-                contagemEmpate++;
-                if (isPartida) {
-                    playerTurn.innerText = `Parabéns ${playerOne.value}, você venceu!`;
-                    document.querySelectorAll("button").forEach(function (ticTacToeBtn) {
-                        ticTacToeBtn.removeEventListener("click", jogada);
-                    });
-                    const restartButton = document.createElement("button");
-                    restartButton.innerText = "Reiniciar jogo!"
-                    restartButton.type = "button";
-                    restartButton.addEventListener("click", restartGame);
-                    container.appendChild(restartButton);
-                }
-                if(contagemEmpate===9){
-                    playerTurn.innerText = "Jogo empatado!";
-                    const restartButton = document.createElement("button");
-                    restartButton.innerText = "Reiniciar jogo!"
-                    restartButton.type = "button";
-                    restartButton.addEventListener("click", restartGame);
-                    container.appendChild(restartButton);
-                }
-            }else{
-                playerTurn.innerText = `É a sua vez, ${playerOne.value}!`;
-                ticTacToeBtn.innerText = "X";
-                ticTacToeBtn.classList.remove("availablePlay");
-                ticTacToeBtn.classList.add("unavailablePlay");
-                ticTacToeBtn.removeEventListener("click", jogada);
-                //ticTacToeBtn.disabled = true;
-                tagJogada = true;
-                matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "X";
-                const isPartida = verificaTabuleiro();
-                contagemEmpate++;
-                if (isPartida) {
-                    playerTurn.innerText = `Parabéns ${playerTwo.value}, você venceu!`;
-                    document.querySelectorAll("button").forEach(function (ticTacToeBtn) {
-                        ticTacToeBtn.removeEventListener("click", jogada);
-                    });
-                    const restartButton = document.createElement("button");
-                    restartButton.innerText = "Reiniciar jogo!"
-                    restartButton.type = "button";
-                    restartButton.addEventListener("click", restartGame);
-                    container.appendChild(restartButton);
-                }
-                if(contagemEmpate===9){
-                    playerTurn.innerText = "Jogo empatado!";
-                    const restartButton = document.createElement("button");
-                    restartButton.innerText = "Reiniciar jogo!"
-                    restartButton.type = "button";
-                    restartButton.addEventListener("click", restartGame);
-                    container.appendChild(restartButton);
-                }
-                //console.table(matrizDoJogo);
-            }
-        }else{
-            alert("Por favor insira o nome dos jogadores!");
-        }
-    })
+    ticTacToeBtn.addEventListener("click", jogada);
 });
 
 function verificaTabuleiro(){
@@ -136,11 +67,6 @@ function restartGame(){
     //console.log(container.lastChild);
 }
 
-function randomNumberInterval(a, b) {
-    // decide aleatoriamente quem começa o jogo
-    return Math.floor(Math.random() * (b - a + 1)) + a
-}
-
 function changeStyleColor(position1, position2, position3){
     document.querySelectorAll("div > button").forEach(function(button){
         if(button.dataset.value === position1 || button.dataset.value === position2 || button.dataset.value === position3){
@@ -148,4 +74,88 @@ function changeStyleColor(position1, position2, position3){
             button.classList.add("winPosition");
         }
     });
+}
+
+function randomNumberInterval(a, b) {
+    // decide aleatoriamente quem começa o jogo
+    return Math.floor(Math.random() * (b - a + 1)) + a
+}
+
+function jogada(ev){
+    const ticTacToeBtn = ev.currentTarget;
+    if(playerOne.value != "" && playerTwo.value!= "") {
+        if(tagJogada){
+            playerTurn.innerText = `É a sua vez, ${playerTwo.value}!`;
+            console.log(playerOne);
+            ticTacToeBtn.innerText = "O";
+            //ticTacToeBtn.disabled = true;
+            ticTacToeBtn.classList.remove("availablePlay");
+            ticTacToeBtn.classList.add("unavailablePlay");
+            ticTacToeBtn.removeEventListener("click", jogada);
+            tagJogada = false;
+            matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "O";
+            //console.table(matrizDoJogo);
+            const isPartida = verificaTabuleiro();
+            contagemEmpate++;
+            if (isPartida) {
+                playerTurn.innerText = `Parabéns ${playerOne.value}, você venceu!`;
+                document.querySelectorAll(".availablePlay").forEach(function (button) {
+                    console.log(button.innerText);
+                    button.classList.remove("availablePlay");
+                    button.classList.add("unavailablePlay");
+                    button.removeEventListener("click", jogada, true);
+                    //button.enabled = false
+                });
+                const restartButton = document.createElement("button");
+                restartButton.innerText = "Reiniciar jogo!"
+                restartButton.type = "button";
+                restartButton.addEventListener("click", restartGame);
+                container.appendChild(restartButton);
+            }
+            if(contagemEmpate===9){
+                playerTurn.innerText = "Jogo empatado!";
+                const restartButton = document.createElement("button");
+                restartButton.innerText = "Reiniciar jogo!"
+                restartButton.type = "button";
+                restartButton.addEventListener("click", restartGame);
+                container.appendChild(restartButton);
+            }
+        }else{
+            playerTurn.innerText = `É a sua vez, ${playerOne.value}!`;
+            ticTacToeBtn.innerText = "X";
+            ticTacToeBtn.classList.remove("availablePlay");
+            ticTacToeBtn.classList.add("unavailablePlay");
+            ticTacToeBtn.removeEventListener("click", jogada, true);
+            //ticTacToeBtn.disabled = true;
+            tagJogada = true;
+            matrizDoJogo[parseInt(ticTacToeBtn.dataset.value[0])][parseInt(ticTacToeBtn.dataset.value[2])] = "X";
+            const isPartida = verificaTabuleiro();
+            contagemEmpate++;
+            if (isPartida) {
+                playerTurn.innerText = `Parabéns ${playerTwo.value}, você venceu!`;
+                document.querySelectorAll(".availablePlay").forEach(function (button) {
+                    console.log(button.innerText);
+                    button.classList.remove("availablePlay");
+                    button.classList.add("unavailablePlay");
+                    button.removeEventListener("click", jogada);
+                });
+                const restartButton = document.createElement("button");
+                restartButton.innerText = "Reiniciar jogo!"
+                restartButton.type = "button";
+                restartButton.addEventListener("click", restartGame);
+                container.appendChild(restartButton);
+            }
+            if(contagemEmpate===9){
+                playerTurn.innerText = "Jogo empatado!";
+                const restartButton = document.createElement("button");
+                restartButton.innerText = "Reiniciar jogo!"
+                restartButton.type = "button";
+                restartButton.addEventListener("click", restartGame);
+                container.appendChild(restartButton);
+            }
+            //console.table(matrizDoJogo);
+        }
+    }else{
+        alert("Por favor insira o nome dos jogadores!");
+    }
 }
