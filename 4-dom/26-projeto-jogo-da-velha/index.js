@@ -99,11 +99,11 @@ function jogada(ev){
             contagemEmpate++;
             if (isPartida) {
                 playerTurn.innerText = `Parabéns ${playerOne.value}, você venceu!`;
-                document.querySelectorAll(".availablePlay").forEach(function (button) {
+                document.querySelectorAll("div > button").forEach(function (button) {
                     console.log(button.innerText);
                     button.classList.remove("availablePlay");
                     button.classList.add("unavailablePlay");
-                    button.removeEventListener("click", jogada, true);
+                    button.removeEventListener("click", jogada);
                     //button.enabled = false
                 });
                 const restartButton = document.createElement("button");
