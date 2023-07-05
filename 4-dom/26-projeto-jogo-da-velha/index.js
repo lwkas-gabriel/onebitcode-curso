@@ -147,8 +147,8 @@ function jogada(ev){
 
 function restartBtnCreate(){
     const restartBtn = document.createElement("button");
-    restartButton.innerText = "Reiniciar jogo!"
-    restartButton.type = "button";
-    restartButton.addEventListener("click", restartGame);
+    restartBtn.innerText = "Reiniciar jogo!"
+    restartBtn.type = "button";
+    restartBtn.addEventListener("click", restartGame);
     return restartBtn;
 }
