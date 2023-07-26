@@ -1,40 +1,52 @@
 .container{
-    min-height: 60vh;
-    max-width: 100rem;
+    height: 30rem;
+    width: 50rem;
     display: flex;
     align-items: center;
     gap: 4rem;
     background-color: #d4e4e4;
-    border-radius: 20px;
-    padding: 5rem;
+    border-radius: 1rem;
+    padding: 4rem;
+    margin: 2 auto;
 }
 
 .img{
     width: 30rem;
     height: 25rem;
+    border: 8px solid #000;
+    box-shadow: 0 24px -16px rgba(0,0,0, 0.4);
 }
 
 .info{
     display: flex;
     flex-direction: column;
-    gap:2.5rem;
-    margin-bottom: 7.5rem;
+    gap:2rem;
+    //margin-bottom: 7.5rem;
 }
 
 .info h1{
     margin: 0;
+    font-size: 1.75rem;
 }
 
 .info p{
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .info button{
-    font-size: 1.05 rem;
+    font-size: 1rem;
     color: #fff;
-    background-color: black;
-    border-radius: 10px;
-    padding: 1.075rem;
-    width: fit-content;
+    background-color: #121212;
+    border: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0, 0.2);
+    border-radius: .5rem;
+    padding: .75em 1.25em;
+    transition: .3s;
+}
+
+.info button:hover{
+    cursor: pointer;
+    margin-left: .5rem
 }
