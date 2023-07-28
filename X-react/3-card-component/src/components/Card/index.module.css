@@ -1,52 +1,25 @@
 .container{
+    background-color: #d7e1e7;
+    border-radius: 1rem;
+    display: flex;
+    gap: 4rem;
     height: 30rem;
     width: 50rem;
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    background-color: #d4e4e4;
-    border-radius: 1rem;
+    margin: 2rem auto;
     padding: 4rem;
-    margin: 2 auto;
 }
 
-.img{
-    width: 30rem;
-    height: 25rem;
+.poster{
     border: 8px solid #000;
-    box-shadow: 0 24px -16px rgba(0,0,0, 0.4);
+    box-shadow: 0 24px 32px -16px rgba(0,0,0, 0.4);
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    gap:2rem;
-    //margin-bottom: 7.5rem;
-}
-
-.info h1{
-    margin: 0;
+.container h2{
     font-size: 1.75rem;
 }
 
-.info p{
-    margin: 0;
+.container p{
+    margin-top: 2rem;
     font-size: 1rem;
     line-height: 1.5;
-}
-
-.info button{
-    font-size: 1rem;
-    color: #fff;
-    background-color: #121212;
-    border: 0;
-    box-shadow: 0 2px 4px rgba(0,0,0, 0.2);
-    border-radius: .5rem;
-    padding: .75em 1.25em;
-    transition: .3s;
-}
-
-.info button:hover{
-    cursor: pointer;
-    margin-left: .5rem
 }
