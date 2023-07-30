@@ -11,10 +11,12 @@
     border-radius: 6px;
 }
 
-hr{
+.container > div{
+    border: none;
+    border-bottom: 1px solid #428CD1;
     width: 100%;
-    height: 0.125rem;
-    background-color: #428CD1;
+    text-align: center;
+    padding-bottom: .5rem;
 }
 
 img{
