@@ -1,4 +1,4 @@
-button{
+a{
     color: #fff;
     height: 2rem;
     font-weight: bold;
@@ -6,6 +6,14 @@ button{
     width:8rem;
     border: none;
     background-image: linear-gradient(to right, #2F82C5, #67C5E4);
-    /* background-color: blue; */
     border-radius: 4px;
+    text-align: center;
+    padding-top: .4rem;
+    text-decoration: none;
+}
+
+a:hover{
+    margin-left: .5rem;
+    cursor: pointer;
+    opacity: .85;
 }
