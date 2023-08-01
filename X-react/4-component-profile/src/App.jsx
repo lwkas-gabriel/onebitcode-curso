@@ -1,12 +1,18 @@
-import Profile from "./components/Profile"
+import Profile from "./components/Profile";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <Profile name="Lucas Gabriel" position="Frontend Dev @ Mandarin" phone="+55988932041" email="lwkas@lwkas.com.br"/>
-    </>
+    <div className="app">
+      <Profile
+        avatar="https://github.com/lwkas-gabriel.png"
+        name="Lucas Gabriel Correia Barros"
+        bio="Frontend developer @ Mandarin."
+        email="lwkas@lwkas.com"
+        phone="+5585988998899"
+        githubUrl="https://github.com"
+        linkedinUrl="https://linkedin.com"
+        twitterUrl="https://twitter.com"
+      />
+    </div>
   )
 }
-
-export default App

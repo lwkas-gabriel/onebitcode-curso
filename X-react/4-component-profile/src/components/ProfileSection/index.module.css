@@ -1,9 +1,0 @@
-.wrapper:first-of-type{
-    border-top: 1px solid #428CD1;  
-}
-
-.wrapper{
-    width: 100%;
-    border-bottom: 1px solid #428CD1;
-    padding: 1rem 2.5rem;
-}
