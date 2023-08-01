@@ -5,7 +5,7 @@ export default function App() {
     <div className="app">
       <Profile
         avatar="https://github.com/lwkas-gabriel.png"
-        name="Lucas Gabriel Correia Barros"
+        name="Lucas Gabriel"
         bio="Frontend developer @ Mandarin."
         email="lwkas@lwkas.com"
         phone="+5585988998899"
