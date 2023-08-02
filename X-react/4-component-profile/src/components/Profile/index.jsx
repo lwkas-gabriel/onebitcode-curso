@@ -3,13 +3,17 @@ import styles from "./styles.module.css"
 import Title from "../Title"
 import ProfileSection from "../ProfileSection"
 import Button from "../Button"
-
-function handleClick(ev){
-  console.log(ev);
-  alert("Agora voce ta me seguindo!")
-}
+import { useState } from "react";
 
 export default function Profile(props) {
+  const [followText, setFollowText] =  useState("Follow");
+
+  function handleClick(ev){
+    console.log(ev);
+    //alert("Agora voce ta me seguindo!")
+    setFollowText("Following");
+  }
+
   return (
     <div className={styles.container}>
       <img className={styles.avatar} src={props.avatar} alt={props.name} />
@@ -18,7 +22,7 @@ export default function Profile(props) {
         <button className={styles.followButton}
           onClick={handleClick}
         >
-          Follow
+          {followText}
         </button>
       </Title>
       <ProfileSection>{props.bio}</ProfileSection>
