@@ -4,27 +4,25 @@ import './App.css'
 
 function App() {
   function handleCopyText(){
-    const pass = document.getElementById("senha").innerText;
-    navigator.clipboard.writeText(pass);
-    alert("Copied the text: " + pass);
-    setEstado("Copiado")
+    navigator.clipboard.writeText(senha);
+    setEstadoCopiado("Copiado")
   }
 
   function handleNewRandomPasswordGenerate(){
-    const id = document.getElementById("senha");
     let senha = "";
     const chars = "0123456789abcdefghijklmnopqrstuvwxyz_!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const tamanhoSenha = 20;
+    const tamanhoSenha = 12;
 
     for (let i = 0; i <= tamanhoSenha; i++){
       let posicaoAleatoria = Math.floor(Math.random() * chars.length);
       senha += chars[posicaoAleatoria]
     }
-    id.innerText = senha;
-    setEstado("Copiar");
+    setSenha(senha);
+    setEstadoCopiado("Copiar");
   }
 
-  const [estado, setEstado] = useState("Copiar");
+  const [estadoCopiado, setEstadoCopiado] = useState("Copiar");
+  const [senha, setSenha] = useState("");
   return (
     <>
       <h1>Gerador de Senhas</h1>
@@ -33,9 +31,9 @@ function App() {
           Gerar!
         </button>
         <button onClick={handleCopyText}>
-          {estado}
+          {estadoCopiado}
         </button>
-        <div id='senha'> </div>
+        <div>{senha}</div>
       </div>
     </>
   )
