@@ -1,5 +1,6 @@
 import { useState } from 'react'
 //import usePassword from "./hooks/usePassword"
+import Input from "./components/Input"
 import './App.css'
 
 function App() {
@@ -20,10 +21,10 @@ function App() {
     setSenha(senha);
     setEstadoCopiado("Copiar");
   }
-
+  
+  const [tamanhoSenha, setTamanhoSenha] = useState(12);
   const [estadoCopiado, setEstadoCopiado] = useState("Copiar");
   const [senha, setSenha] = useState("");
-  const [tamanhoSenha, setTamanhoSenha] = useState(12);
 
   return (
     <>
@@ -31,13 +32,7 @@ function App() {
       <div className="card">
         <div>
           <label htmlFor="passwordSize">Tamanho: </label>
-          <input
-            id="passwordSize"
-            type="number"
-            min={1}
-            value={tamanhoSenha}
-            onChange={(ev) => setTamanhoSenha(ev.target.value)}
-          />
+          <Input passwordSize={tamanhoSenha} setPasswordSize={setTamanhoSenha} />
         </div>
         <button onClick={handleNewRandomPasswordGenerate}>
           Gerar!
