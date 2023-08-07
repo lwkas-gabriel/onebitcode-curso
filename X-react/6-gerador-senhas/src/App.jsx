@@ -22,20 +22,35 @@ function App() {
     setEstadoCopiado("Copiar");
   }
   
-  const [tamanhoSenha, setTamanhoSenha] = useState(12);
+  const [tamanhoSenhaCustomizado, setTamanhoSenhaCustomizada] = useState(12);
   const [estadoCopiado, setEstadoCopiado] = useState("Copiar");
   const [senha, setSenha] = useState("");
+  const [showInput, setShowInput] = useState(false);
 
+  const tamanhoSenha = showInput ? tamanhoSenhaCustomizado : 8;
   return (
     <>
       <h1>Gerador de Senhas</h1>
+      <div>
+        <label htmlFor="showInput" id='showInput'>Customizar Tamanho:</label>
+        <input
+         type="checkbox"
+         id="showInput"
+         value={showInput}
+         onChange={()=> setShowInput(currentState => !currentState)}
+        />
+      </div>
+
       <div className="card">
-        <div>
-          <label htmlFor="passwordSize">Tamanho: </label>
-          <Input passwordSize={tamanhoSenha} setPasswordSize={setTamanhoSenha} />
-        </div>
+        {showInput ? (
+          <div>
+            <label htmlFor="passwordSize">Tamanho: </label>
+            <Input passwordSize={tamanhoSenhaCustomizado} setPasswordSize={setTamanhoSenhaCustomizada} />
+          </div>
+        ) : null}
+        
         <button onClick={handleNewRandomPasswordGenerate}>
-          Gerar!
+          Gerar senha de {tamanhoSenha} caracteres!
         </button>
         <button onClick={handleCopyText}>
           {estadoCopiado}
