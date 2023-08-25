@@ -3,8 +3,6 @@ form{
     flex-direction: column;
     justify-content: center;
     gap: .85rem;
-    background-color: #EAEAEA;
-    padding: 2rem;
     border-radius: 6px;
   }
   
@@ -14,6 +12,11 @@ form{
   
   form h1{
     font-size: 1.3rem;
+  }
+
+  form textarea{
+    height: 6rem;
+    resize: none;
   }
   
   form button{

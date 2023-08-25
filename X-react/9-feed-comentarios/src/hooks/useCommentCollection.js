@@ -7,9 +7,9 @@ export default function useCommentColletion(){
         return JSON.parse(storedComments);
       });
     
-      const addComment = ({email, commentText}) => {
-        const date = Math.floor(Math.random() * 1000000);
-        const comment = {date, email, commentText};
+      const addComment = (email, data, commentText) => {
+        const comment = {email, data ,commentText};
+        //console.log(email, data, commentText);
         setComments(state => {
           const newState = [...state, comment];
           localStorage.setItem("comment-collect", JSON.stringify(newState));

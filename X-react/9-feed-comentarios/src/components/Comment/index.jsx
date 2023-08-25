@@ -1,9 +1,18 @@
-export function Comment(){
+import PropTypes from "prop-types"
+import styles from "./styles.modules.css"
+
+Comment.propTypes = {
+    email: PropTypes.string,
+    data: PropTypes.string,
+    commentText: PropTypes.string
+}
+
+export function Comment({email, data, commentText}){
     return (
         <div>
-            <strong>email@email</strong>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, id.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, excepturi.</p>
+            <strong>{email}</strong>
+            <p>{data}</p>
+            <p>{commentText}</p>
         </div>
     )
 }
