@@ -2,7 +2,7 @@
 import styles from "./styles.module.css"
 import PropTypes from "prop-types"
 import { useState } from "react";
-import { format } from "date-fns";
+import { format, getTime } from "date-fns";
 
 NewCommentForm.propTypes = {
     addComment: PropTypes.func
@@ -15,8 +15,9 @@ export function NewCommentForm({ addComment }){
     const handleSubmit = (ev) => {
         ev.preventDefault();
         const dateNow = new Date();
+        const id = getTime(dateNow)
         const dataFormatted = format(dateNow, "'Dia' dd 'de' MMMM', às ' HH:mm'h'");
-        addComment(email, dataFormatted, comment);
+        addComment(id, email, dataFormatted, comment);
         setEmail("");
         setComment("");
     }

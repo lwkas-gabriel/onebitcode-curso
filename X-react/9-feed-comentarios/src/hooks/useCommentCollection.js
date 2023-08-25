@@ -7,8 +7,8 @@ export default function useCommentColletion(){
         return JSON.parse(storedComments);
       });
     
-      const addComment = (email, data, commentText) => {
-        const comment = {email, data ,commentText};
+      const addComment = (id, email, data, commentText) => {
+        const comment = {id, email, data ,commentText};
         //console.log(email, data, commentText);
         setComments(state => {
           const newState = [...state, comment];

@@ -1,7 +1,6 @@
 import { Comment } from "./components/Comment";
 import { NewCommentForm } from "./components/NewCommentForm"
 import useCommentColletion from "./hooks/useCommentCollection"
-import {getTime, parseISO} from "date-fns"
 
 function App() {
   const {comments, addComment} = useCommentColletion();
@@ -17,7 +16,7 @@ function App() {
           <p>Seja o primeiro a comentar!</p> : 
             comments.map((comment) => (
             <Comment
-              key={getTime(parseISO(comment.data))}
+              key={comment.id}
               email={comment.email}
               data={comment.data}
               commentText={comment.commentText}
