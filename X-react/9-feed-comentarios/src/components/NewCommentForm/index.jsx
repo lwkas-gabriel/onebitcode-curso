@@ -17,7 +17,13 @@ export function NewCommentForm({ addComment }){
         const dateNow = new Date();
         const id = getTime(dateNow)
         const dataFormatted = format(dateNow, "'Dia' dd 'de' MMMM', às ' HH:mm'h'");
-        addComment(id, email, dataFormatted, comment);
+        const newComment = {
+            id: id,
+            email: email,
+            comment: comment,
+            createdAt: dataFormatted
+        }
+        addComment(newComment);
         setEmail("");
         setComment("");
     }
@@ -31,6 +37,7 @@ export function NewCommentForm({ addComment }){
                 name="email"
                 id="email"
                 value={email}
+                required
                 onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="comment">Comentário: </label>
@@ -38,6 +45,7 @@ export function NewCommentForm({ addComment }){
                 name="comment"
                 id="comment"
                 value={comment}
+                required
                 onChange={(e) => setComment(e.target.value)}
             />
             <button type='submit'>Submit</button>

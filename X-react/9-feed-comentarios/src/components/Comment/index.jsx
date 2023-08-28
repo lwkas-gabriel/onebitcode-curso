@@ -5,16 +5,16 @@ import styles from "./styles.modules.css"
 Comment.propTypes = {
     id: PropTypes.number,
     email: PropTypes.string,
-    data: PropTypes.string,
+    createdAt: PropTypes.string,
     commentText: PropTypes.string
 }
 
-export function Comment({ email, data, commentText }){
+export function Comment(comment){
     return (
-        <div className="wrapper">
-            <strong>{email}</strong>
-            <p>{data}</p>
-            <p>{commentText}</p>
+        <div>
+            <strong>{comment.email}</strong>
+            <p>{comment.createdAt}</p>
+            <p>{comment.comment}</p>
         </div>
     )
 }

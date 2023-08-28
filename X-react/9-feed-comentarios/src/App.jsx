@@ -18,8 +18,8 @@ function App() {
             <Comment
               key={comment.id}
               email={comment.email}
-              data={comment.data}
-              commentText={comment.commentText}
+              createdAt={comment.createdAt}
+              comment={comment.comment}
             />
         ))}
       </div>
