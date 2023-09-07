@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
-import Home from "./components/Home"
-import Products from "./components/Products"
-import Cart from "./components/Cart"
-import AdminHome from "./components/AdminHome"
+import Home from "./pages/Home"
+import Products from "./pages/Products"
+import Cart from "./pages/Cart"
+import AdminHome from "./pages/admin/AdminHome"
 
 const router = createBrowserRouter([
     {

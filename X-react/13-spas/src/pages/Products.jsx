@@ -1,16 +1,10 @@
-import { Link } from "react-router-dom"
+import Header from "../components/Header"
 import products from "../database.json"
 
 export default function Products(){
     return (
         <section>
-            <header>
-                <nav style={{display: "flex", gap: "2rem"}}>
-                    <Link to="/">Início</Link>
-                    <Link to="/cart">Carrinho</Link>
-                    <Link to="/products">Produtos</Link>
-                </nav>
-            </header>
+            <Header/>
             <h2>Todos os produtos</h2>
             <p>Confira todas as nossas ofertas.</p>
             <section className="products">
