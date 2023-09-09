@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+header span{
+    font-weight: bold;
+}
+
+.navi{
+    display: flex;
+    gap: 2rem;
+}
