@@ -7,9 +7,18 @@
 .container{
     background-color: darkgray;
     min-height: 100vh;
+    display: flex;
+    gap: 0 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 200px;
     height: 200px;
     border: 2px solid black;
