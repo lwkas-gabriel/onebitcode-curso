@@ -26,11 +26,12 @@
     border: 1px solid white
 }
 
-img{
-    width: 30px;
+.list-button button:hover{
+    border: 1px solid red;
+    transition: .7s;
 }
 
-#logo{
-    height: auto;
-    width: 200px;
+img{
+    height: 45px;
+    width: auto;
 }
