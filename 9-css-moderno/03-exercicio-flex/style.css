@@ -6,11 +6,16 @@
 
 .container{
     height: 80px;
-    padding: 0 50px;
+    padding: 10px 50px;
     background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+img{
+    height: 45px;
+    width: auto;
 }
 
 .list-button{
@@ -19,19 +24,16 @@
 }
 
 .list-button button{
+    font-size: 20px;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: transparent;
     color: white;
-    border: 1px solid white
+    border: 1px solid white;
+    cursor: pointer;
+    transition: .6s;
 }
 
 .list-button button:hover{
-    border: 1px solid red;
-    transition: .7s;
-}
-
-img{
-    height: 45px;
-    width: auto;
+    border-color: red;
 }
