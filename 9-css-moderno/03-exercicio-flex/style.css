@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    height: 80px;
+    padding: 0 50px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-button{
+    display: flex;
+    gap: 0 10px;
+}
+
+.list-button button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white
+}
+
+img{
+    width: 30px;
+}
+
+#logo{
+    height: auto;
+    width: 200px;
+}
