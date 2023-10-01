@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-first-component',
@@ -6,35 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first-component.component.css']
 })
 export class FirstComponentComponent implements OnInit {
+  @Output() name: string[] = ["Lucas", "Felipe", "João", "Leonardo"];
+  show = true;
+
   constructor(){}
 
-  variable = 1;
+  ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    console.log('ngOnChanges');
-  }
-
-  ngOnInit(): void {
-    console.log('ngOnInit');
-  }
-
-  ngDoCheck(): void {
-    console.log('ngDoCheck');
-  }
-
-  ngAfterContentInit(): void {
-    console.log('ngAfterContentInit');
-  }
-
-  ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
-  }
-
-  varChange(){
-    this.variable++;
-  }
 }
