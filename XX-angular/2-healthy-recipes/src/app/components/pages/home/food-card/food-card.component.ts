@@ -31,6 +31,13 @@ export class FoodCardComponent {
   }
 
   loadMore(){
-
+    this.loadingMore = true;
+    // vai ficar carregando mais receitas de 3 em 3, lembrando que o limite eh de 100 receitas.
+    this.service.listRandomFood(3).pipe(finalize(() =>{
+      this.loadingMore = false;
+    })
+    ).subscribe((data: any) =>{
+      this.foods = this.foods.concat(data.recipes);
+    });
   }
 }
