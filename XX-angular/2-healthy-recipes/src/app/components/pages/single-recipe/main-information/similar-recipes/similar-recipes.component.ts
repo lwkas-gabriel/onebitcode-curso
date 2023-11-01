@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-similar-recipes',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./similar-recipes.component.css']
 })
 export class SimilarRecipesComponent {
-
+  @Input() recipeIdSimilar !: number;
 }

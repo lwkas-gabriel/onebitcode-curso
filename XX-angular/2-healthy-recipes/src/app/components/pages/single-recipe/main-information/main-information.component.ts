@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
 import { SingleRecipeService } from 'src/app/services/single-recipe/single-recipe.service';
@@ -13,6 +13,8 @@ export class MainInformationComponent {
   public recipeId: number = 1;
   public food:any = [];
 
+  @Output() recipeIdSimilar!: number;
+
   constructor(private service: SingleRecipeService, private route: ActivatedRoute){
 
   }
@@ -22,6 +24,7 @@ export class MainInformationComponent {
     this.getRecipeId();
     // usa o id ja pego e retorna as infos da receita desejada...
     this.takeRecipe(this.recipeId);
+    this.recipeIdSimilar = this.recipeId;
   }
 
   getRecipeId(){
