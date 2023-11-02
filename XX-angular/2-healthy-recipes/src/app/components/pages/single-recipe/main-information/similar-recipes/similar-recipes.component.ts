@@ -29,6 +29,6 @@ export class SimilarRecipesComponent {
   }
 
   reloadPage(){
-    setTimeout(()=>{window.location.reload}, 1);
+    setTimeout(()=>{window.location.reload()}, 1);
   }
 }
