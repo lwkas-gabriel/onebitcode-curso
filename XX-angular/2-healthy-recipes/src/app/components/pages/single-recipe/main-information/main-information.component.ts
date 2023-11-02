@@ -30,7 +30,7 @@ export class MainInformationComponent {
   getRecipeId(){
     this.route.queryParams.subscribe((queryParams: any)=>{
       //a linha abaixo pego id da rota
-      this.recipeId = queryParams("id");
+      this.recipeId = queryParams["id"];
     });
   }
 
