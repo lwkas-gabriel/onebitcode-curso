@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./similar-recipes.component.css']
 })
 export class SimilarRecipesComponent {
+  public loading = true;
+
   @Input() recipeIdSimilar !: number;
 }
