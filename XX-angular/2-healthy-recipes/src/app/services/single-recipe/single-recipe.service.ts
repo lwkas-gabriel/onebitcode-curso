@@ -13,7 +13,7 @@ export class SingleRecipeService {
     return this.http.get(apiUrl);
   }
 
-  takeSimilarRecipe(id: number){
+  takeSimilarRecipe(id: number): any{
     const apiUrl = `https://api.spoonacular.com/recipes/${id}/similar?apiKey=884df11ed8b8401b9a2582ff7198c7a8`;
     return this.http.get(apiUrl);
   }
